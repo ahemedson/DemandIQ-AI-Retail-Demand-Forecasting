@@ -1,0 +1,16 @@
+streamlit
+pandas
+numpy
+plotly
+scikit-learn
+xgboost
+prophet
+google-genai
+openpyxl
+reportlab
+kaleido
+matplotlib
+jinja2
+python-dotenv
+scipy
+joblib
