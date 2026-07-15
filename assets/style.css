@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   Design System variables
+   ========================================================================== */
+:root {
+    --bg-color: #F8FAFC;
+    --text-color: #0F172A;
+    --heading-color: #0B2545;
+    --subheading-color: #1E293B;
+    --muted-color: #64748B;
+    
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+    
+    --sidebar-bg: linear-gradient(180deg, #071225 0%, #0B2545 100%);
+    --sidebar-border: #1E293B;
+    --sidebar-text: #CBD5E1;
+    --sidebar-nav-text: #94A3B8;
+    --sidebar-active-bg: rgba(0, 180, 216, 0.15);
+    --sidebar-active-border: rgba(0, 180, 216, 0.3);
+    --sidebar-active-accent: #00B4D8;
+    
+    --button-normal-bg: linear-gradient(135deg, #0B2545 0%, #13315C 100%);
+    --button-normal-hover-bg: linear-gradient(135deg, #13315C 0%, #00B4D8 100%);
+    
+    --input-bg: #FFFFFF;
+    --input-border: #E2E8F0;
+    --input-text: #0F172A;
+    
+    --chat-user-bg: #F8FAFC;
+    --chat-assistant-bg: #FFFFFF;
+    --chat-user-border: #00B4D8;
+    --chat-assistant-border: #06D6A0;
+}
+
+/* Dark theme selector */
+.dark-theme, body.dark-theme, [data-testid="stAppViewContainer"].dark-theme {
+    --bg-color: #090D16 !important;
+    --text-color: #F1F5F9 !important;
+    --heading-color: #00B4D8 !important;
+    --subheading-color: #CBD5E1 !important;
+    --muted-color: #94A3B8 !important;
+    
+    --card-bg: #131B2E !important;
+    --card-border: #1E293B !important;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2) !important;
+    --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4) !important;
+    
+    --sidebar-bg: linear-gradient(180deg, #05080E 0%, #0B1221 100%) !important;
+    --sidebar-border: #131B2E !important;
+    --sidebar-text: #94A3B8 !important;
+    --sidebar-nav-text: #64748B !important;
+    --sidebar-active-bg: rgba(0, 180, 216, 0.2) !important;
+    --sidebar-active-border: rgba(0, 180, 216, 0.4) !important;
+    --sidebar-active-accent: #00B4D8 !important;
+    
+    --input-bg: #0F172A !important;
+    --input-border: #1E293B !important;
+    --input-text: #F1F5F9 !important;
+    
+    --chat-user-bg: #0C111D !important;
+    --chat-assistant-bg: #131B2E !important;
+    --chat-user-border: #00B4D8 !important;
+    --chat-assistant-border: #06D6A0 !important;
+}
+
+/* ==========================================================================
+   Global Reset & Typography
+   ========================================================================== */
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+/* Force font family across all Streamlit elements */
+.stMarkdown, .stButton, .stSelectbox, .stSlider, .stTextInput, .stNumberInput, [data-testid="stMetricValue"], [data-testid="stMetricLabel"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Adjust page spacing and padding */
+.block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 3rem !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+    max-width: 1300px !important;
+}
+
+/* ==========================================================================
+   Brand Colors & Header Styles
+   ========================================================================== */
+h1, h2 {
+    color: var(--heading-color) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 0.5rem !important;
+    transition: color 0.3s ease !important;
+}
+
+h3, h4, h5, h6 {
+    color: var(--subheading-color) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.015em !important;
+    transition: color 0.3s ease !important;
+}
+
+/* Caption and subheadings */
+.stMarkdown p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   Sidebar Navigation Overrides
+   ========================================================================== */
+[data-testid="stSidebar"] {
+    background: var(--sidebar-bg) !important;
+    border-right: 1px solid var(--sidebar-border) !important;
+    color: var(--sidebar-text) !important;
+    transition: background 0.3s ease, border-color 0.3s ease !important;
+}
+
+[data-testid="stSidebar"] .stMarkdown, 
+[data-testid="stSidebar"] p, 
+[data-testid="stSidebar"] span, 
+[data-testid="stSidebar"] label {
+    color: var(--sidebar-text) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileUploader"] {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px dashed rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileUploader"] section {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 15px;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    transition: all 0.2s ease-in-out !important;
+    cursor: pointer !important;
+    color: var(--sidebar-nav-text) !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #FFFFFF !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label[data-checked="true"] {
+    background-color: var(--sidebar-active-bg) !important;
+    border: 1px solid var(--sidebar-active-border) !important;
+    color: #FFFFFF !important;
+    border-left: 4px solid var(--sidebar-active-accent) !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label [data-testid="stVisualGuideline"] {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Premium KPI Cards
+   ========================================================================== */
+[data-testid="stMetric"] {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 12px !important;
+    padding: 20px 24px !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: all 0.25s ease-out !important;
+    margin-bottom: 12px !important;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--card-hover-shadow) !important;
+    border-color: #00B4D8 !important;
+}
+
+[data-testid="stMetricLabel"] {
+    color: var(--muted-color) !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: var(--text-color) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.03em !important;
+    margin-top: 4px !important;
+}
+
+[data-testid="stMetricDelta"] {
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+}
+
+/* ==========================================================================
+   Form Controls, Inputs, and Selectors
+   ========================================================================== */
+.stButton > button {
+    background: var(--button-normal-bg) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 24px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 6px -1px rgba(11, 37, 69, 0.2) !important;
+    transition: all 0.2s ease !important;
+    height: auto !important;
+}
+
+.stButton > button:hover {
+    background: var(--button-normal-hover-bg) !important;
+    box-shadow: 0 6px 12px -1px rgba(0, 180, 216, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+.stButton > button:active {
+    transform: translateY(1px) !important;
+}
+
+/* Primary Form buttons / Call-To-Action */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #00B4D8 0%, #06D6A0 100%) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 180, 216, 0.2) !important;
+}
+
+.stButton > button[kind="primary"]:hover {
+    background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%) !important;
+    box-shadow: 0 6px 12px -1px rgba(0, 119, 182, 0.35) !important;
+}
+
+.stSelectbox [data-baseweb="select"], .stTextInput input, .stNumberInput input {
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--input-border) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    color: var(--input-text) !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.stSelectbox [data-baseweb="select"]:hover, .stTextInput input:hover, .stNumberInput input:hover {
+    border-color: var(--muted-color) !important;
+}
+
+.stSelectbox [data-baseweb="select"]:focus-within, .stTextInput input:focus, .stNumberInput input:focus {
+    border-color: #00B4D8 !important;
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15) !important;
+}
+
+.stSlider [role="slider"] {
+    background-color: #00B4D8 !important;
+    border: 2px solid #FFFFFF !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stSlider [data-testid="stSliderTrack"] > div {
+    background-color: #00B4D8 !important;
+}
+
+/* ==========================================================================
+   Dataframes, Tables, and Expanders
+   ========================================================================== */
+div[data-testid="stDataFrame"] {
+    border: 1px solid var(--card-border) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--card-shadow) !important;
+    overflow: hidden !important;
+    background-color: var(--card-bg) !important;
+}
+
+.stExpander {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 10px !important;
+    box-shadow: var(--card-shadow) !important;
+    margin-bottom: 12px !important;
+}
+
+.stExpander summary {
+    font-weight: 600 !important;
+    color: var(--text-color) !important;
+    padding: 14px 20px !important;
+}
+
+.stExpander summary:hover {
+    color: #00B4D8 !important;
+}
+
+.stExpander > div[role="region"] {
+    padding: 16px 20px !important;
+    border-top: 1px solid var(--card-border) !important;
+}
+
+/* ==========================================================================
+   Chat UI Styling
+   ========================================================================== */
+[data-testid="stChatMessage"] {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+[data-testid="stChatMessage"]:nth-child(even) {
+    background-color: var(--chat-user-bg) !important;
+    border-left: 4px solid var(--chat-user-border) !important;
+}
+
+[data-testid="stChatMessage"]:nth-child(odd) {
+    background-color: var(--chat-assistant-bg) !important;
+    border-left: 4px solid var(--chat-assistant-border) !important;
+}
+
+[data-testid="stChatInput"] {
+    border-radius: 10px !important;
+    border: 1px solid var(--card-border) !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+[data-testid="stChatInput"] textarea {
+    font-size: 0.95rem !important;
+}
+
+div[key^="suggested_"] button {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    box-shadow: var(--card-shadow) !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+}
+
+div[key^="suggested_"] button:hover {
+    background: #E0F2FE !important;
+    border-color: #00B4D8 !important;
+    color: #0077B6 !important;
+    transform: none !important;
+    box-shadow: 0 2px 4px 0 rgba(0, 180, 216, 0.1) !important;
+}
+
+/* ==========================================================================
+   Alerts, Success, Info Cards
+   ========================================================================== */
+.stAlert {
+    border-radius: 10px !important;
+    border: none !important;
+    padding: 16px 20px !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+div[data-testid="stAlert"] {
+    background-color: var(--card-bg) !important;
+    border-left: 4px solid #00B4D8 !important;
+}
+
+div[data-testid="stAlert"] [data-testid="stNotificationContentSuccess"] {
+    border-left: 4px solid #06D6A0 !important;
+}
+
+div[data-testid="stAlert"] [data-testid="stNotificationContentInfo"] {
+    border-left: 4px solid #00B4D8 !important;
+}
+
+div[data-testid="stAlert"] [data-testid="stNotificationContentWarning"] {
+    border-left: 4px solid #FFB703 !important;
+}
+
+div[data-testid="stAlert"] [data-testid="stNotificationContentError"] {
+    border-left: 4px solid #E63946 !important;
+}
+
+/* Custom Dividers */
+hr {
+    border: 0 !important;
+    height: 1px !important;
+    background: var(--card-border) !important;
+    margin: 2rem 0 !important;
+}
+
+/* Hide Default Streamlit Branding Elements */
+footer { visibility: hidden !important; }
+.stDeployButton { display: none !important; }
+#MainMenu { display: none !important; }
+header[data-testid="stHeader"] {
+    background-color: transparent !important;
+}
+
+/* Collapsed Sidebar Chevron Control Button */
+[data-testid="stSidebarCollapsedControl"] {
+    display: flex !important;
+    visibility: visible !important;
+    left: 15px !important;
+    top: 15px !important;
+    z-index: 999999 !important;
+}
+
+[data-testid="stSidebarCollapsedControl"] button {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    color: var(--text-color) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--card-shadow) !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+[data-testid="stSidebarCollapsedControl"] button:hover {
+    border-color: #00B4D8 !important;
+    color: #00B4D8 !important;
+}

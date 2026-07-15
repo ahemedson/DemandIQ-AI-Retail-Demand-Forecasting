@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 
 from utils.formatter import Formatter
+from utils.styling import style_plotly_figure
 
 
 def show_chart(
@@ -188,11 +189,8 @@ def show_chart(
     # --------------------------------------------------
 
     st.plotly_chart(
-
-        fig,
-
+        style_plotly_figure(fig),
         use_container_width=True
-
     )
 
     # --------------------------------------------------

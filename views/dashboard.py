@@ -3,6 +3,7 @@ import streamlit as st
 from utils.kpis import KPI
 from utils.charts import Charts
 from utils.business_insights import BusinessInsights
+from utils.styling import style_plotly_figure
 
 
 def show():
@@ -77,7 +78,7 @@ def show():
     st.subheader("📈 Daily Sales Trend")
 
     st.plotly_chart(
-        charts.daily_sales_trend(),
+        style_plotly_figure(charts.daily_sales_trend()),
         use_container_width=True
     )
 
@@ -92,14 +93,14 @@ def show():
     with left:
 
         st.plotly_chart(
-            charts.sales_by_store(),
+            style_plotly_figure(charts.sales_by_store()),
             use_container_width=True
         )
 
     with right:
 
         st.plotly_chart(
-            charts.sales_by_day(),
+            style_plotly_figure(charts.sales_by_day()),
             use_container_width=True
         )
 
@@ -112,7 +113,7 @@ def show():
     st.subheader("📅 Monthly Sales Trend")
 
     st.plotly_chart(
-        charts.monthly_sales_trend(),
+        style_plotly_figure(charts.monthly_sales_trend()),
         use_container_width=True
     )
 
@@ -127,14 +128,14 @@ def show():
     with left:
 
         st.plotly_chart(
-            charts.promotion_impact(),
+            style_plotly_figure(charts.promotion_impact()),
             use_container_width=True
         )
 
     with right:
 
         st.plotly_chart(
-            charts.sales_distribution(),
+            style_plotly_figure(charts.sales_distribution()),
             use_container_width=True
         )
 
@@ -149,14 +150,14 @@ def show():
     with left:
 
         st.plotly_chart(
-            charts.top_stores(),
+            style_plotly_figure(charts.top_stores()),
             use_container_width=True
         )
 
     with right:
 
         st.plotly_chart(
-            charts.bottom_stores(),
+            style_plotly_figure(charts.bottom_stores()),
             use_container_width=True
         )
 

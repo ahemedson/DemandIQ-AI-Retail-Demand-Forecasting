@@ -28,20 +28,29 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# -----------------------------
-# Initialize Session
+# Initialize Session & Theme
 # -----------------------------
 initialize_session()
 
-# -----------------------------
-# Sidebar
-# -----------------------------
-st.sidebar.title("📦 DemandIQ")
-st.sidebar.caption("AI-Powered Retail Demand Forecasting")
-st.sidebar.divider()
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
 
-# Upload Dataset
+# -----------------------------
+# Sidebar & Upload
+# -----------------------------
 upload_dataset()
+
+st.sidebar.divider()
+st.session_state.dark_mode = st.sidebar.toggle(
+    "🌙 Dark Mode",
+    value=st.session_state.dark_mode
+)
+
+# -----------------------------
+# Global Premium Styling
+# -----------------------------
+from utils.styling import apply_custom_styling
+apply_custom_styling(dark_mode=st.session_state.dark_mode)
 
 st.sidebar.divider()
 

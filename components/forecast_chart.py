@@ -6,6 +6,7 @@ from config.settings import (
     DATE_COLUMN,
     TARGET_COLUMN
 )
+from utils.styling import style_plotly_figure
 
 
 def show_chart(
@@ -244,11 +245,8 @@ def show_chart(
     # --------------------------------------------------
 
     st.plotly_chart(
-
-        fig,
-
+        style_plotly_figure(fig),
         use_container_width=True
-
     )
 
     st.divider()
