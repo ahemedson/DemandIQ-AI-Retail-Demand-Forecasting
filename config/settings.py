@@ -126,6 +126,12 @@ AI_MODEL = "google/gemini-2.5-flash"
 AI_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Retrieve from Streamlit Secrets first (for cloud deployment), fallback to environment variables
+try:
+    secrets_keys = list(st.secrets.keys()) if hasattr(st, "secrets") else []
+    print(f"DEBUG: Available Streamlit Secrets Keys: {secrets_keys}")
+except Exception as e:
+    print(f"DEBUG: Error listing secrets: {str(e)}")
+
 if "OPENROUTER_API_KEY" in st.secrets:
     AI_API_KEY = st.secrets["OPENROUTER_API_KEY"]
 else:
