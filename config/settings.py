@@ -114,6 +114,7 @@ XGBOOST_PARAMS = {
 # ==========================================================
 
 import os
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -124,7 +125,11 @@ AI_MODEL = "google/gemini-2.5-flash"
 
 AI_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
-AI_API_KEY = os.getenv("OPENROUTER_API_KEY")
+# Retrieve from Streamlit Secrets first (for cloud deployment), fallback to environment variables
+if "OPENROUTER_API_KEY" in st.secrets:
+    AI_API_KEY = st.secrets["OPENROUTER_API_KEY"]
+else:
+    AI_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 AI_TEMPERATURE = 0.3
 
